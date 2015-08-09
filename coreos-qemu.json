@@ -4,6 +4,7 @@
     "coreos_version": "766.0.0",
     "iso_checksum": "e8da63e79906ce70bfdbe575349d42b9",
     "iso_checksum_type": "md5",
+    "install_headless": true,
     "install_target": "/dev/vda",
     "atlas_token": "",
     "atlas_username": ""
@@ -15,7 +16,7 @@
       "iso_url": "http://{{user `coreos_channel`}}.release.core-os.net/amd64-usr/{{user `coreos_version`}}/coreos_production_iso_image.iso",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
-      "headless": true,
+      "headless": "{{user `install_headless`}}",
       "http_directory": "files",
       "disk_size": 40960,
       "format": "qcow2",
