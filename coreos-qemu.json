@@ -6,6 +6,8 @@
     "iso_checksum_type": "md5",
     "install_headless": true,
     "install_target": "/dev/vda",
+    "disk_size": 40960,
+    "memory": "1024M",
     "atlas_token": "",
     "atlas_username": ""
   },
@@ -18,11 +20,11 @@
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "headless": "{{user `install_headless`}}",
       "http_directory": "files",
-      "disk_size": 40960,
+      "disk_size": "{{user `disk_size`}}",
       "format": "qcow2",
       "accelerator": "kvm",
       "qemuargs": [
-        [ "-m", "1024M" ]
+        [ "-m", "{{user `memory`}}" ]
       ],
       "boot_command":
       [
