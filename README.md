@@ -43,6 +43,12 @@ If you would like to build a box for a different channel and version, substitute
 
 ```packer build -var 'coreos_channel=stable' -var 'coreos_version=723.3.0' -var 'iso_checksum=0dd7086b7a169702242ad97a2f4758ec' -var 'atlas_token=mytoken' -var 'atlas_username=myusername' coreos-qemu.json```
 
+To use the latest current version for a channel you can pick up the iso_checksum automatically using something like (replace alpha with channel you prefer):
+
+```packer build -var "coreos_channel=alpha" -var "coreos_version=current" -var "iso_checksum=$(curl -s http://alpha.release.core-os.net/amd64-usr/current/coreos_production_iso.DIGESTS | sed '2q;d' | cut -d ' ' -f 1,1)" coreos-qemu.json```
+
+If you do not wish to push the artifact to atlas, use the `coreos-qemu-localbuild.json` file instead.
+
 By default, the Packer [QEMU builder](https://www.packer.io/docs/builders/qemu.html) uses "virtio" as the disk interface, which results in a target device of ```/dev/vda```. If for some reason you need to install CoreOS to a different device, it can be overriden using the ```install_target``` variable.
 
 Once the box has been built, you may either add it to Vagrant using the Atlas artifact name (example: ```vagrant box add bfraser/coreos-alpha```) or manually using a command such as the following:
