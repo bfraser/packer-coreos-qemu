@@ -7,9 +7,7 @@
     "install_headless": "false",
     "install_target": "/dev/vda",
     "disk_size": "40960",
-    "memory": "1024M",
-    "atlas_token": "",
-    "atlas_username": ""
+    "memory": "1024M"
   },
   "builders":
   [
@@ -59,16 +57,14 @@
     }
   ],
   "post-processors": [
-    [
-      {
-        "type": "vagrant",
-        "output": "output/coreos-{{user `coreos_channel`}}-{{user `coreos_version`}}-{{.Provider}}.box",
-        "vagrantfile_template": "Vagrantfile",
-        "include": [
-          "scripts/change_host_name.rb",
-          "scripts/configure_networks.rb"
-        ]
-      }
-    ]
+    {
+      "type": "vagrant",
+      "output": "output/coreos-{{user `coreos_channel`}}-{{user `coreos_version`}}-{{.Provider}}.box",
+      "vagrantfile_template": "Vagrantfile",
+      "include": [
+        "scripts/change_host_name.rb",
+        "scripts/configure_networks.rb"
+      ]
+    }
   ]
 }
