@@ -68,20 +68,7 @@
           "scripts/change_host_name.rb",
           "scripts/configure_networks.rb"
         ]
-      },
-      {
-        "type": "atlas",
-        "token": "{{user `atlas_token`}}",
-        "artifact": "{{user `atlas_username`}}/coreos-{{user `coreos_channel`}}",
-        "artifact_type": "vagrant.box",
-        "metadata": {
-          "provider": "libvirt",
-          "version": "{{user `coreos_version`}}"
-        }
       }
     ]
-  ],
-  "push": {
-    "name": "{{user `atlas_username`}}/coreos-{{user `coreos_channel`}}"
-  }
+  ]
 }
